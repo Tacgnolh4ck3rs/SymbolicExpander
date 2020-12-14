@@ -1,0 +1,25 @@
+{
+"problems": [
+        {
+            "name": "problem1",
+            "expr": "(x+y+z)^2-42",
+            "operation":{
+            "code": "expand"
+            }
+        },
+        {
+            "name": "problem2",
+            "expr": "3*((x+y)^2)",
+            "operation": {
+            "code": "expand"
+            }
+        },
+        {
+            "name": "problem3", 
+            "expr": "3*((x+y)^2)",
+            "operation":{
+            "code":"cOOl"
+            }
+        }
+    ]
+}
