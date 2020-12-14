@@ -1,8 +1,0 @@
-{
-    "function":"sin(x*pi/2)+x",
-    "range":{
-    "min":0.0,
-    "max":6.1428
-    },
-    "partitions":1000
-}
