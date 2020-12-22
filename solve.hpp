@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+
 
 using namespace std;
 /**
@@ -8,18 +10,15 @@ using namespace std;
  */ 
 
 
-class Solve{
-private:
-    string problem;/*! Name of problem */  
-    string expression;/*! Mathematic expression to expand */
-    string code;/*! Code to identify */  
-public:
-        Solve(string, string, string);
-
-        /**
-         * Function to expand mathematic expressions
-         * \param exp the expression to expand
-         */ 
-        void expandigExpression(string exp);
-
+class expSolve{
+public: 
+        string name;
+        string expr;
+        string code;
+        string expExpr;
+        void genOut(string expExpr);
 };
+
+expSolve::genOut(string expExpr){
+    expSolve::
+}
