@@ -1,10 +1,10 @@
 {
 "problems": [
         {
-            "name": "problem1",
-            "expr": "(x+y+z)^2-42",
-            "operation":{
-            "code": "expand"
+            "name": "problem1", 
+            "expr": "(x+y+z)^2-42", 
+            "operation":{ 
+            "code": "expand" 
             }
         },
         {

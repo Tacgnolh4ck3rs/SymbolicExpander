@@ -1,17 +1,30 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(expandExpression)
 
+set(CMAKE_CXX_STANDARD 20)
+
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if (MSVC)
     message(STATUS "You are using Microsoft Visual C++ for compiling this.")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 endif()
 
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
+message(STATUS "Include dir")
+message(STATUS ${Python3_INCLUDE_DIRS})
 
 set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
 add_executable(main main.cpp)
 include(GoogleTest)
 include_directories(googletest/googletest/include)
+include_directories(${Python3_INCLUDE_DIRS})
+add_subdirectory(pybind11)
+target_link_libraries(main PRIVATE pybind11::embed)
 #add_subdirectory(googletest)
 #add_subdirectory(tests)
 
