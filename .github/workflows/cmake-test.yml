@@ -22,7 +22,7 @@ jobs:
     
     - name: Install Python 3 with dev dependencies
       shell: bash
-      run: apt install python3 python3-dev
+      run: sudo apt install python3 python3-dev
     
     - name: Load submodules
       shell: bash
