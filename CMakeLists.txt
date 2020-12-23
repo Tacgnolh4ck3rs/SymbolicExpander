@@ -3,6 +3,8 @@ project(expandExpression)
 
 set(CMAKE_CXX_STANDARD 20)
 
+# Trigger action!
+
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if (MSVC)
     message(STATUS "You are using Microsoft Visual C++ for compiling this.")
