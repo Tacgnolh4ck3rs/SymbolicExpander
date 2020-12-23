@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
     argh::parser cmdl;
     cmdl.add_params({"-input", "--fileName"});//Argh! input 
     cmdl.parse(argc,argv);
-    string fileName = cmdl({"-input","--fileNme"}).str();
+    string fileName = cmdl({"-input","--fileName"}).str();
     vector<string> arrayValue;
     //Key type is string
     //           value type is vector<string>
