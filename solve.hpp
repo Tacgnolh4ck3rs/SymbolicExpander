@@ -9,12 +9,6 @@
 using namespace std;
 namespace py = pybind11;
 
-/**
- * Solve class, wich is used
- * to expand Mathematic expressions!!
- */
-
-
 class expSolve
 {
 public:
@@ -30,8 +24,13 @@ public:
         auto pymodule = py::reinterpret_borrow<py::object>(code);
         //Get function as attr from the object
         auto pyExp = pymodule.attr("expF");
-        //Get result of the call as an integer
-        std::string aux = pyExp(exprStr).cast<string>();
+        //Get result of the call as an string
+        //std::string aux = pyExp(exprStr).cast<string>(); //less errors, still wont work
+        //Untested begin
+        std::string aux;
+        aux << pyExp(exprStr).cast<string>();
+
+        //untested end
         //DEBUG
         cout << "Hey, Python said that result is equal to " << aux << endl;
         //SymEngine::print_stack_on_segfault();
