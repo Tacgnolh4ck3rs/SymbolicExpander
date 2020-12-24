@@ -51,3 +51,11 @@ jobs:
       shell: bash
       # Run the resulting test file
       run: ${{runner.workspace}}/build/tests/test
+
+    - name: Cowsay after tests
+      uses: Code-Hex/neo-cowsay-action@v1
+      with:
+          message: |
+              All t3st p4553d!
+              Hello, Saturn!!
+
