@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 2.8.11)
 project(expandExpression)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=* --fix --fix-errors)
-# Trigger action!
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if (MSVC)

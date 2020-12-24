@@ -27,15 +27,15 @@ public:
         //Get result of the call as an string
         //std::string aux = pyExp(exprStr).cast<string>(); //less errors, still wont work
         //Untested begin
-        std::string aux;
+        std::stringstream aux;
         aux << pyExp(exprStr).cast<string>();
 
         //untested end
         //DEBUG
-        cout << "Hey, Python said that result is equal to " << aux << endl;
+        cout << "Hey, Python said that result is equal to " << &aux << endl;
         //SymEngine::print_stack_on_segfault();
         //RCP<const Basic> x= symbol("x");
-        return aux;
+        return aux.str();
     }
     tuple<string, bool> select(string codeStr)
     {

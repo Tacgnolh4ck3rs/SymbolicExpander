@@ -1,6 +1,7 @@
 #include "argh.h"
 #include "json.hpp"
 #include "solve.hpp"
+#include <fstream>
 
 using json=nlohmann::json;
 
