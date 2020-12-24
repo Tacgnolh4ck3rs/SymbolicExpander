@@ -32,7 +32,7 @@ public:
 
         //untested end
         //DEBUG
-        cout << "Hey, Python said that result is equal to " << &aux << endl;
+        cout << "Hey, Python said that result is equal to " << aux.str() << endl;
         //SymEngine::print_stack_on_segfault();
         //RCP<const Basic> x= symbol("x");
         return aux.str();
