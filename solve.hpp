@@ -12,12 +12,12 @@ namespace py = pybind11;
 class expSolve
 {
 public:
+    expSolve() {
+        //Import the developed python 3 file with functions
+        code = py::module::import("expandUtils");
+    }
     string pyExpand(string exprStr)
     {
-        //Create python interpreter
-        py::scoped_interpreter guard{};
-        //Import the developed python 3 file with functions
-        py::module code = py::module::import("expandUtils");
         //Check that file has been imported
         py::print(code.attr("__file__"));
         //Reinterpret module as object (Really needed?)
@@ -47,4 +47,6 @@ public:
             return {(strerr.append(codeStr)).append("\""),true};
         }
     }
+    py::module code;
+    py::scoped_interpreter guard;
 };

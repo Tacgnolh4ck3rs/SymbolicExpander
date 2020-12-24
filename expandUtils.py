@@ -6,5 +6,5 @@ def add(a, b):
     return a+b;
 
 def expF(expr):
-    return expand(expr);
+    return str(expand(expr));
     
