@@ -44,15 +44,14 @@ else (DOXYGEN_FOUND)
     message("Doxygen is not installed, could not generate docs")
 endif (DOXYGEN_FOUND)
 
-add_custom_command(
-        TARGET main POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_SOURCE_DIR}/config.json
-                ${CMAKE_CURRENT_BINARY_DIR}/config.json)
+set( FILES_DIR
+    ${CMAKE_SOURCE_DIR}/config.json
+    ${CMAKE_SOURCE_DIR}/expandUtils.py)
 
-add_custom_command(
-        TARGET main POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_SOUCE_DIR}/expandUtils.py
-                ${CMAKE_CURRENT_BINARY_DIR}/expandUtils.py)
-
+foreach( file_i ${FILES_DIR})
+    add_custom_command(
+    TARGET main
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND}
+    ARGS -E copy ${file_i} ${CMAKE_CURRENT_BINARY_DIR})
+endforeach( file_i )

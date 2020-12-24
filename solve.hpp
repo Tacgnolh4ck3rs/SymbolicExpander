@@ -19,7 +19,7 @@ public:
     string pyExpand(string exprStr)
     {
         //Check that file has been imported
-        py::print(code.attr("__file__"));
+        //py::print(code.attr("__file__")); //debug
         //Reinterpret module as object (Really needed?)
         auto pymodule = py::reinterpret_borrow<py::object>(code);
         //Get function as attr from the object
@@ -32,8 +32,8 @@ public:
 
         //untested end
         //DEBUG
-        cout << "Hey, Python said that result is equal to " << aux.str() << endl;
-        //SymEngine::print_stack_on_segfault();
+        //cout << "Hey, Python said that result is equal to " << aux.str() << endl;
+        // SymEngine::print_stack_on_segfault();
         //RCP<const Basic> x= symbol("x");
         return aux.str();
     }
@@ -48,5 +48,5 @@ public:
         }
     }
     py::module code;
-    py::scoped_interpreter guard;
+    py::scoped_interpreter guard{};
 };

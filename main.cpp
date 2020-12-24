@@ -56,7 +56,7 @@ auto main(int argc, char **argv) -> int {
         );
     }
 
-    cout << "Symbolic Math Application" << endl << "--------------------------" << endl << endl;
+    std::cout << std::endl <<"Symbolic Math Application" << endl << "--------------------------" << endl << endl;
 
     for (auto k : myMap) {
         std::cout << k.first << ". " << get<0>(stuff.select(k.second.at(1)))<<std::endl;
@@ -65,7 +65,7 @@ auto main(int argc, char **argv) -> int {
         }
         std::cout << k.second.at(0) << std::endl;
         std::cout << "Result:"<< endl;
-        std::cout << stuff.pyExpand(k.second.at(0)) << std::endl ;
+        std::cout << stuff.pyExpand(k.second.at(0)) << std::endl<<std::endl;
 
     }
 
