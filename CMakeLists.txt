@@ -24,8 +24,8 @@ include_directories(googletest/googletest/include)
 include_directories(${Python3_INCLUDE_DIRS})
 add_subdirectory(pybind11)
 target_link_libraries(main PRIVATE pybind11::embed)
-#add_subdirectory(googletest)
-#add_subdirectory(tests)
+add_subdirectory(googletest)
+add_subdirectory(tests)
 
 # Doxygen snippet
 option(BUILD_DOC "Build documentation" ON)

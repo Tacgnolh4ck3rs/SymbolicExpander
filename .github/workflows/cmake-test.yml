@@ -50,4 +50,4 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Run the resulting test file
-      run: ${{runner.workspace}}/build/test
+      run: ${{runner.workspace}}/build/tests/test
