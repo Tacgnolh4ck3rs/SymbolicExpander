@@ -2,7 +2,7 @@
 :+1::tada::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
 ## Code of Conduct
-This project and everyone participating in it is governed by no one really, we're using external libraries (such as [Argh!](https://github.com/adishavit/argh) and [JSON for Modern C++](https://github.com/nlohmann/json)
+This project and everyone participating in it is governed by no one really, we're using external libraries (such as [Argh!](https://github.com/adishavit/argh) and [JSON for Modern C++](https://github.com/nlohmann/json))
 
 ## How Can I Contribute?
 
