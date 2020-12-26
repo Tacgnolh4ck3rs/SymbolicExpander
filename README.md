@@ -25,8 +25,7 @@ main.exe -f config.json
 
 Under macOS/Linux distros:
 
-<<<<<<< HEAD
-````bash
+```bash
 pip install -U -r requirements.txt 
 =======
 ```bash
