@@ -25,8 +25,12 @@ main.exe -f config.json
 
 Under macOS/Linux distros:
 
+<<<<<<< HEAD
 ````bash
 pip install -U -r requirements.txt 
+=======
+```bash
+>>>>>>> 51ab2b1367566878d8be499520cb710c03dcd80d
 mkdir build
 cmake ..
 make
@@ -38,12 +42,12 @@ make
 The main intend of this project is to expand a function of _n_ symbolic variables.
 All letters (or combinations of) in the roman alphabet are accepted as symbolic variables, symbols are sadly, not accepted as variable names.
 
-To have a multiplication, a `*` has to be used explicitely, `^` is used strictly for a boolean (or bitwise) exclusive or. Power is represented by `**`.
+To have a multiplication, a `*` has to be used explicitely, ^ is used strictly for a boolean (or bitwise) exclusive or. Power is represented by **.
 
 If you want to expand <img src="http://latex.codecogs.com/svg.latex?\left%20(%20x^{2}%20\right%20)\left%20(%20y^{4}&plus;%20x^{78}%20\right%20)(x&plus;y)^{3}(x-4)/(y&plus;8)" title="http://latex.codecogs.com/svg.latex?\left%20(%20x^{2}%20\right%20)\left%20(%20y^{4}+%20x^{78}%20\right%20)(x+y)^{3}(x-4)/(y+8)" />
 you'd have to write in the JSON (more on that below) 
 
-````bash
+```bash
 (x**2)*(y*44 + x**78)*((x+y)**3)*(x-4)/(y+8)
 ```
 
