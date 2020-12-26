@@ -15,6 +15,7 @@ And that's it.
 On the project root folder path
 
 Under Windows: (todo; verify this)
+
 ```bash
 pip install -U -r requirements.txt 
 mkdir build
@@ -27,9 +28,6 @@ Under macOS/Linux distros:
 
 ```bash
 pip install -U -r requirements.txt 
-=======
-```bash
->>>>>>> 51ab2b1367566878d8be499520cb710c03dcd80d
 mkdir build
 cmake ..
 make
