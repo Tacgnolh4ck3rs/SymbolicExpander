@@ -16,6 +16,7 @@ On the project root folder path
 
 Under Windows: (todo; verify this)
 ```bash
+pip install -U -r requirements.txt 
 mkdir build
 cd build
 cmake ..
@@ -25,6 +26,7 @@ main.exe -f config.json
 Under macOS/Linux distros:
 
 ````bash
+pip install -U -r requirements.txt 
 mkdir build
 cmake ..
 make
@@ -44,6 +46,43 @@ you'd have to write in the JSON (more on that below)
 ````bash
 (x**2)*(y*44 + x**78)*((x+y)**3)*(x-4)/(y+8)
 ```
+
+#JSON file
+
+The JSON file formatting is as important as the accepted and not accepted symbols, it's the heart of the project
+
+The basic structure should be like this
+
+```bash
+ {
+  1 "problems": [
+  2         {
+  3             "name": "problem1", 
+  4             "expr": "(x+y+z)^2-42", 
+  5             "operation":{ 
+  6             "code": "expand" 
+  7             }
+  8         },
+  9         {
+ 10             "name": "problem2",
+ 11             "expr": "3*((x+y)^2)",
+ 12             "operation": {
+ 13             "code": "expand"
+ 14             }
+ 15         },
+ 16         {
+ 17             "name": "problem3", 
+ 18             "expr": "3*((x+y)^2)",
+ 19             "operation":{
+ 20             "code":"cOOl"
+ 21             }
+ 22         }
+ 23     ]
+ 24 }
+```
+
+where you can have as many elements as needed
+So far, only one operation code is supported, and that is `expand`.
 
 ## Contributing
 
