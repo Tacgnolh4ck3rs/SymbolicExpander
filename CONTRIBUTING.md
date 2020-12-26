@@ -1,4 +1,4 @@
-# Contributing to integrateCalculator
+# Contributing to ExpandExpressions 
 :+1::tada::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
 ## Code of Conduct
