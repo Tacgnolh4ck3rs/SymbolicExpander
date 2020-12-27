@@ -5,7 +5,7 @@
 
 using json=nlohmann::json;
 
-auto main(int argc, char **argv) -> int {
+int main(int argc, char **argv) {
 
     expSolve stuff;
 
@@ -19,7 +19,6 @@ auto main(int argc, char **argv) -> int {
     }
 
     std::string file = cmdl({"-f","--file"}).str();
-
     //Key type is string
     //value type is vector<string>
     //map< KeyType, ValueType > myMap;
@@ -66,8 +65,6 @@ auto main(int argc, char **argv) -> int {
         std::cout << k.second.at(0) << std::endl;
         std::cout << "Result:"<< endl;
         std::cout << stuff.pyExpand(k.second.at(0)) << std::endl<<std::endl;
-
     }
-
     return 0;
 }

@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <string>
+#include <sstream>
 #include <tuple>
 //SymbolicC++ headers
 #include <pybind11/embed.h>
@@ -13,8 +14,10 @@ class expSolve
 {
 public:
     expSolve() {
-        //Import the developed python 3 file with functions
+        py::initialize_interpreter();
         code = py::module::import("expandUtils");
+    }
+    ~expSolve() {
     }
     string pyExpand(string exprStr)
     {
@@ -44,9 +47,9 @@ public:
         if(codeStr == "Expand" || codeStr == "expand") {
             return std::make_tuple(str1, false);
         } else {
-            return {(strerr.append(codeStr)).append("\""),true};
+            return std::make_tuple(strerr.append(codeStr).append("\""),true);
         }
     }
+private:
     py::module code;
-    py::scoped_interpreter guard{};
 };
