@@ -17,7 +17,7 @@ public:
         py::initialize_interpreter();
         code = py::module::import("expandUtils");
     }
-    ~expSolve() {
+    ~expSolve() noexcept(false) {
     }
     string pyExpand(string exprStr)
     {
