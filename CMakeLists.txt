@@ -1,19 +1,33 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(expandExpression)
 
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if (MSVC)
     message(STATUS "You are using Microsoft Visual C++ for compiling this.")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+    link_directories(C:/Users/sisco/AppData/Local/Programs/Python/Python39/libs)
 endif()
 
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+message(STATUS "Include dir")
+message(STATUS ${Python3_INCLUDE_DIRS})
 
 set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
-add_executable(main main.cpp)
+add_executable(main main.cpp solve.hpp)
 include(GoogleTest)
 include_directories(googletest/googletest/include)
-#add_subdirectory(googletest)
-#add_subdirectory(tests)
+include_directories(${Python3_INCLUDE_DIRS})
+include_directories(pybind11/include)
+add_subdirectory(pybind11)
+target_link_libraries(main PRIVATE pybind11::embed)
+add_subdirectory(googletest)
+add_subdirectory(tests)
 
 # Doxygen snippet
 option(BUILD_DOC "Build documentation" ON)
@@ -32,3 +46,15 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
     message("Doxygen is not installed, could not generate docs")
 endif (DOXYGEN_FOUND)
+
+set( FILES_DIR
+    ${CMAKE_SOURCE_DIR}/config.json
+    ${CMAKE_SOURCE_DIR}/expandUtils.py)
+
+foreach( file_i ${FILES_DIR})
+    add_custom_command(
+    TARGET main
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND}
+    ARGS -E copy ${file_i} ${CMAKE_CURRENT_BINARY_DIR})
+endforeach( file_i )

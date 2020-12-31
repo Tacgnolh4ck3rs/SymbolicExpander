@@ -1,25 +1,55 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <string>
+#include <sstream>
+#include <tuple>
+//SymbolicC++ headers
+#include <pybind11/embed.h>
 
 using namespace std;
-/**
- * Solve class, wich is used
- * to expand Mathematic expressions!!
- */ 
+namespace py = pybind11;
 
-
-class Solve{
-private:
-    string problem;/*! Name of problem */  
-    string expression;/*! Mathematic expression to expand */
-    string code;/*! Code to identify */  
+class expSolve
+{
 public:
-        Solve(string, string, string);
+    expSolve() {
+        py::initialize_interpreter();
+        code = py::module::import("expandUtils");
+    }
+    ~expSolve() noexcept(false) {
+    }
+    string pyExpand(string exprStr)
+    {
+        //Check that file has been imported
+        //py::print(code.attr("__file__")); //debug
+        //Reinterpret module as object (Really needed?)
+        auto pymodule = py::reinterpret_borrow<py::object>(code);
+        //Get function as attr from the object
+        auto pyExp = pymodule.attr("expF");
+        //Get result of the call as an string
+        //std::string aux = pyExp(exprStr).cast<string>(); //less errors, still wont work
+        //Untested begin
+        std::stringstream aux;
+        aux << pyExp(exprStr).cast<string>();
 
-        /**
-         * Function to expand mathematic expressions
-         * \param exp the expression to expand
-         */ 
-        void expandigExpression(string exp);
-
+        //untested end
+        //DEBUG
+        //cout << "Hey, Python said that result is equal to " << aux.str() << endl;
+        // SymEngine::print_stack_on_segfault();
+        //RCP<const Basic> x= symbol("x");
+        return aux.str();
+    }
+    tuple<string, bool> select(string codeStr)
+    {
+        string str1="Expand the expression:";
+        string strerr="Unknown operation code \"";
+        if(codeStr == "Expand" || codeStr == "expand") {
+            return std::make_tuple(str1, false);
+        } else {
+            return std::make_tuple((strerr.append(codeStr)).append("\""),true);
+        }
+    }
+private:
+    py::module code;
 };
