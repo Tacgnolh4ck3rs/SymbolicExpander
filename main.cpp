@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 
     for (auto k : myMap) {
         std::cout << k.first << ". " << get<0>(stuff.select(k.second.at(1)))<<std::endl;
-        if (get<1>(stuff.select(k.second.at(1)))) {
+        if (get<1>(stuff.select(k.second.at(1)))){
             break;
         }
         std::cout << k.second.at(0) << std::endl;

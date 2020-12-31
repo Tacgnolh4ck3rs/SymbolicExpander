@@ -43,11 +43,11 @@ public:
     tuple<string, bool> select(string codeStr)
     {
         string str1="Expand the expression:";
-        string strerr="Unknown operation code ";
+        string strerr="Unknown operation code \"";
         if(codeStr == "Expand" || codeStr == "expand") {
             return std::make_tuple(str1, false);
         } else {
-            return std::make_tuple(strerr.append(codeStr).append("\""),true);
+            return std::make_tuple((strerr.append(codeStr)).append("\""),true);
         }
     }
 private:
