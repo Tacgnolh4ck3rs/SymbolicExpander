@@ -9,6 +9,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if (MSVC)
     message(STATUS "You are using Microsoft Visual C++ for compiling this.")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+    link_directories(C:/Users/sisco/AppData/Local/Programs/Python/Python39/libs)
 endif()
 
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
