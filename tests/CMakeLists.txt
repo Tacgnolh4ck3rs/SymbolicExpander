@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
-project(test VERSION 1.0)
+project(test)
 # Secondary CMakeLists.txt, which is placed
 # under tests folder. This would load the googletest
 # and build it as well. Even more, it would compiles
@@ -21,7 +20,6 @@ add_executable(${This} mainTests.cpp)
 # Set gtest_main for linking with the executable file
 # using _main means that we do not need to specify a 
 # int main(...) function at our mainTests.cpp
-target_link_libraries(${This} PUBLIC gtest_main)
+target_link_libraries(${This} PUBLIC gtest_main pybind11::embed)
 # Look for tests at the file
 gtest_discover_tests(${This})
-
