@@ -32,7 +32,7 @@ public:
         code = py::module::import("expandUtils");
     }
 
-    ~expSolve()/*! Class Destructur*/ noexcept(false) {
+    ~expSolve()/*! Class Destructor*/ noexcept(false) {
     }
     /**
      * Function to expand expression using py libraries
