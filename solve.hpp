@@ -9,16 +9,36 @@
 
 using namespace std;
 namespace py = pybind11;
+/**
+ * expSolve class, wich is used
+ * to expand expressions!
+ *
+ * you could expand Formulas like
+ *
+ * \f$(x+y+z)^2\f$
+ *
+ * \f$(x+1)*(x+2)*(x+3)\f$
+ *
+ * \f$(x+1)/(x+2)**2 * (x+3)\f$
+ */
+
 
 class expSolve
 {
 public:
-    expSolve() {
+
+    expSolve() { /*! Class Constructor*/
         py::initialize_interpreter();
         code = py::module::import("expandUtils");
     }
-    ~expSolve() noexcept(false) {
+
+    ~expSolve()/*! Class Destructur*/ noexcept(false) {
     }
+    /**
+     * Function to expand expression using py libraries
+     * \param exprStr the function expression
+     * \return the function expanded
+     */
     string pyExpand(string exprStr)
     {
         //Check that file has been imported
