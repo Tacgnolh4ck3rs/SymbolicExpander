@@ -45,7 +45,7 @@ If you want to expand <img src="http://latex.codecogs.com/svg.latex?\left%20(%20
 you'd have to write in the JSON (more on that below) 
 
 ```bash
-(x**2)*(y*44 + x**78)*((x+y)**3)*(x-4)/(y+8)
+(x**2)*(y**4 + x**78)*((x+y)**3)*(x-4)/(y+8)
 ```
 
 #JSON file
@@ -87,4 +87,8 @@ So far, only one operation code is supported, and that is `expand`.
 
 ## Contributing
 
-We encourage you to contribute to our project, it's quite simple and should't need taht much work, but do you happen to have an idea and could use this as a foundation? Go ahead and do it! You could help this little project be useful to people outside our team, and that be great :grin:, so go ahead and check out the [Contributing thingy](CONTRIBUTING.md)
+We encourage you to contribute to our project, it's quite simple and should't need that much work, but do you happen to have an idea and could use this as a foundation? Go ahead and do it! You could help this little project be useful to people outside our team, and that be great :grin:, so go ahead and check out the [Contributing thingy](CONTRIBUTING.md)
+
+## Resources
+
+We have an Overleaf document where we update the status of this project. If you want to read it and contribute, it's right [here](https://www.overleaf.com/4292754548drnmzggfbkjb)
