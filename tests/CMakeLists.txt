@@ -9,7 +9,7 @@ include(GoogleTest)
 # Set the variable ${This} to the value "test"
 set(This test)
 # Print a message
-message(STATUS "Cmake source dir is ${CMAKE_SOURCE_DIR}")
+#message(STATUS "Cmake source dir is ${CMAKE_SOURCE_DIR}")
 # Add google test build to project
 # This set below is needed for Windows builds
 if (MSVC)
