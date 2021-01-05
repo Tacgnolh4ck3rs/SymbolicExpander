@@ -5,36 +5,43 @@
 #include <cstring>
 
 
-class MyTest : public ::testing::Test
-{
-protected:
-    static void SetUpTestCase() {
-        std::cerr << "TestSuiteSetup" << std::endl;
-    }
-
-    static void TearDownTestCase() {
-
-    }
+class BaseTest : public ::testing::Test {
+ protected:
 };
 
+// Derives a fixture FooTest from BaseTest.
+class FooTest : public BaseTest {
+ protected:
+  void SetUp() override {
+    BaseTest::SetUp();  // Sets up the base fixture first.
+    std::cout<<"SetUp called :) \n";
+  }
 
+  void TearDown() override {
+    BaseTest::TearDown();  // Remember to tear down the base fixture
+                           // after cleaning up FooTest!
+    std::cout<<"TearDown called :(\n";
+  }
+
+};
 
 //-------------------------------------
 //Error code testing
-TEST(MyTest, FirstTestCode) {
+TEST(FooTest, FirstTestCode) {
     expSolve thing;
     std::string str("Expand the expression:");
     EXPECT_EQ(str.c_str() ,std::get<0>(thing.select("expand")));
+    thing.~expSolve();
 }
 
-TEST(MyTest, SecondTestCode) {
+TEST(FooTest, SecondTestCode) {
     expSolve thing;
     std::string str("Expand the expression:");
     EXPECT_EQ(str.c_str(),std::get<0>(thing.select("Expand")));
 }
 
 
-TEST(MyTest, ThirdTestCode) {
+TEST(FooTest, ThirdTestCode) {
     expSolve thing;
     std::string str("Unknown operation code \"");
     EXPECT_EQ(str.c_str(),std::get<0>(thing.select("I have an existential crisis")));
@@ -45,13 +52,13 @@ TEST(MyTest, ThirdTestCode) {
 //Taking as true WolframAlpha outputs :)
 
 
-TEST(MyTest, EZPZExp) { //(x+1)*(x+2)*(x+3) --> x**3 + 6*x**2 + 11*x + 6
+TEST(FooTest, EZPZExp) { //(x+1)*(x+2)*(x+3) --> x**3 + 6*x**2 + 11*x + 6
     expSolve thing;
     std::string str("x**3 + 6*x**2 + 11*x + 6");
     EXPECT_EQ(str.c_str(), thing.pyExpand("(x+1)*(x+2)*(x+3)"));
 }
 
-TEST(MyTest, KindaComplexAfButWhoReallyKnowsExp) { //(x+1)/(x+2)**2 * (x+3) --> x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)
+TEST(FooTest, KindaComplexAfButWhoReallyKnowsExp) { //(x+1)/(x+2)**2 * (x+3) --> x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)
     expSolve thing;
     std::string str("x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)");
     EXPECT_EQ(str.c_str(), thing.pyExpand("(x+1)/(x+2)**2 * (x+3)"));
