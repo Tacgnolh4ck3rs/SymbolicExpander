@@ -3,7 +3,7 @@ name: CMake
 on:
   push:
     branches:
-      - test
+      - main
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -22,11 +22,7 @@ jobs:
     
     - name: Install Python 3 with dev dependencies
       shell: bash
-<<<<<<< HEAD
-      run: apt install python3 python3-dev
-=======
       run: sudo apt install python3 python3-dev
->>>>>>> test
     
     - name: Load submodules
       shell: bash
@@ -54,9 +50,6 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Run the resulting test file
-<<<<<<< HEAD
-      run: ${{runner.workspace}}/build/test
-=======
       run: ${{runner.workspace}}/build/tests/test
 
     - name: Cowsay after tests
@@ -66,4 +59,3 @@ jobs:
               All t3st p4553d!
               Hello, Saturn!!
 
->>>>>>> test
