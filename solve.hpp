@@ -10,7 +10,7 @@
 using namespace std;
 namespace py = pybind11;
 /**
- * expSolve class, wich is used
+ * ExpSolve class, wich is used
  * to expand expressions!
  *
  * you could expand Formulas like
@@ -23,16 +23,16 @@ namespace py = pybind11;
  */
 
 
-class expSolve
+class ExpSolve
 {
 public:
 
-    expSolve() { /*! Class Constructor*/
+    ExpSolve() { /*! Class Constructor*/
         py::initialize_interpreter();
         code = py::module::import("expandUtils");
     }
 
-    ~expSolve()/*! Class Destructor*/ noexcept(false) {
+    ~ExpSolve()/*! Class Destructor*/ noexcept(false) {
     }
     /**
      * Function to expand expression using py libraries

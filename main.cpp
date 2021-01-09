@@ -7,7 +7,7 @@ using json=nlohmann::json;
 
 int main(int argc, char **argv) {
 
-    expSolve stuff;
+    ExpSolve stuff;
 
     argh::parser cmdl;
     cmdl.add_params({"-f", "--file"});
