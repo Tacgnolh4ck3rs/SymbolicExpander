@@ -4,47 +4,53 @@
 #include <iostream>
 #include <cstring>
 
-
-class BaseTest : public ::testing::Test {
- protected:
+/*
+class BaseTest : public ::testing::Test{
 };
 
+
+*/
 // Derives a fixture FooTest from BaseTest.
-class FooTest : public BaseTest {
- protected:
-  void SetUp() override {
-    BaseTest::SetUp();  // Sets up the base fixture first.
-    std::cout<<"SetUp called :) \n";
-  }
+//class FooTest : public BaseTest {
+class FooTest : public ::testing::Test {
+protected:
+    static ExpSolve *thing;
+    static void SetUpTestSuite() {
+        //SetUp();  // Sets up the base fixture first.
+        thing = new ExpSolve();
+        std::cout<<"SetUp called :) \n";
+    }
 
-  void TearDown() override {
-    BaseTest::TearDown();  // Remember to tear down the base fixture
-                           // after cleaning up FooTest!
-    std::cout<<"TearDown called :(\n";
-  }
-
+    static void TearDownTestSuite() {
+        //TearDown();  // Remember to tear down the base fixture
+        // after cleaning up FooTest!
+        delete thing;
+        std::cout<<"TearDown called :(\n";
+    }
+    virtual ~FooTest() noexcept override {};
 };
+
+ExpSolve *FooTest::thing;
 
 //-------------------------------------
 //Error code testing
-TEST(FooTest, FirstTestCode) {
-    expSolve thing;
+TEST_F(FooTest, FirstTestCode) {
+    //ExpSolve thing;
     std::string str("Expand the expression:");
-    EXPECT_EQ(str.c_str() ,std::get<0>(thing.select("expand")));
-    thing.~expSolve();
+    EXPECT_EQ(str.c_str(),std::get<0>(thing->select("expand")));
 }
 
-TEST(FooTest, SecondTestCode) {
-    expSolve thing;
+TEST_F(FooTest, SecondTestCode) {
+    //ExpSolve thing;
     std::string str("Expand the expression:");
-    EXPECT_EQ(str.c_str(),std::get<0>(thing.select("Expand")));
+    EXPECT_EQ(str.c_str(),std::get<0>(thing->select("Expand")));
 }
 
 
-TEST(FooTest, ThirdTestCode) {
-    expSolve thing;
+TEST_F(FooTest, ThirdTestCode) {
+    //ExpSolve thing;
     std::string str("Unknown operation code \"");
-    EXPECT_EQ(str.c_str(),std::get<0>(thing.select("I have an existential crisis")));
+    EXPECT_EQ(str.c_str(),std::get<0>(thing->select("I have an existential crisis")));
 }
 //--------------------------------------
 
@@ -52,20 +58,14 @@ TEST(FooTest, ThirdTestCode) {
 //Taking as true WolframAlpha outputs :)
 
 
-TEST(FooTest, EZPZExp) { //(x+1)*(x+2)*(x+3) --> x**3 + 6*x**2 + 11*x + 6
-    expSolve thing;
+TEST_F(FooTest, EZPZExp) { //(x+1)*(x+2)*(x+3) --> x**3 + 6*x**2 + 11*x + 6
+    //ExpSolve thing;
     std::string str("x**3 + 6*x**2 + 11*x + 6");
-    EXPECT_EQ(str.c_str(), thing.pyExpand("(x+1)*(x+2)*(x+3)"));
+    EXPECT_EQ(str.c_str(), thing->pyExpand("(x+1)*(x+2)*(x+3)"));
 }
 
-TEST(FooTest, KindaComplexAfButWhoReallyKnowsExp) { //(x+1)/(x+2)**2 * (x+3) --> x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)
-    expSolve thing;
+TEST_F(FooTest, KindaComplexAfButWhoReallyKnowsExp) { //(x+1)/(x+2)**2 * (x+3) --> x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)
+    //ExpSolve thing;
     std::string str("x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)");
-    EXPECT_EQ(str.c_str(), thing.pyExpand("(x+1)/(x+2)**2 * (x+3)"));
-}
-
-int main(int argc, char* argv[])
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    EXPECT_EQ(str.c_str(), thing->pyExpand("(x+1)/(x+2)**2 * (x+3)"));
 }
