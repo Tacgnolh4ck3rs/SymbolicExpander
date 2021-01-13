@@ -49,7 +49,7 @@ TEST_F(FooTest, SecondTestCode) {
 
 TEST_F(FooTest, ThirdTestCode) {
     //ExpSolve thing;
-    std::string str("Unknown operation code \"");
+    std::string str("Unknown operation code \"I have an existential crisis\"");
     EXPECT_EQ(str.c_str(),std::get<0>(thing->select("I have an existential crisis")));
 }
 //--------------------------------------
@@ -66,6 +66,6 @@ TEST_F(FooTest, EZPZExp) { //(x+1)*(x+2)*(x+3) --> x**3 + 6*x**2 + 11*x + 6
 
 TEST_F(FooTest, KindaComplexAfButWhoReallyKnowsExp) { //(x+1)/(x+2)**2 * (x+3) --> x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)
     //ExpSolve thing;
-    std::string str("x**2/(x**2 + 4*x + 4) + (4*x)/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)");
+    std::string str("x**2/(x**2 + 4*x + 4) + 4*x/(x**2 + 4*x + 4) + 3/(x**2 + 4*x + 4)");
     EXPECT_EQ(str.c_str(), thing->pyExpand("(x+1)/(x+2)**2 * (x+3)"));
 }
