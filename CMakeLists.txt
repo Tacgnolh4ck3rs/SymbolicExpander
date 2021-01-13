@@ -31,6 +31,13 @@ target_link_libraries(main PUBLIC pybind11::embed)
 add_subdirectory(googletest)
 add_subdirectory(tests)
 
+#install Python requirements
+add_custom_command(
+    OUTPUT requir.stamp
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt requirements.txt
+    COMMAND ./pip install -r requirements.txt --upgrade
+    )
+
 # Doxygen snippet
 option(BUILD_DOC "Build documentation" ON)
 find_package(Doxygen)
