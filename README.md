@@ -29,6 +29,7 @@ Under macOS/Linux distros:
 ```bash
 pip3 install -U -r requirements.txt 
 mkdir build
+cd build
 cmake ..
 make
 ./main -f config.json
