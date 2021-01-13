@@ -25,13 +25,15 @@ jobs:
       run: |
         echo "Installing python"
         sudo apt install python3 python3-dev
+        echo "Installing Python requirements"
+        pip3 install -r requirements.txt
   
-    - name: Install Python submodelules via pip
-      uses: py-actions/py-dependency-install@v2
-      with:
-        update-pip: "true"
-        update-setuptools: "false"
-        update-wheel: "false"
+    #- name: Install Python submodelules via pip
+    #  uses: py-actions/py-dependency-install@v2
+    #  with:
+    #    update-pip: "true"
+    #    update-setuptools: "false"
+    #    update-wheel: "false"
     
     - name: Load submodules
       shell: bash
